@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tuntrace — Clash Verge 流量归因</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>tuntrace</h1>
+    <div class="header-right">
+      <select id="range">
+        <option value="15">近 15 分钟</option>
+        <option value="60" selected>近 60 分钟</option>
+        <option value="360">近 6 小时</option>
+        <option value="1440">近 24 小时</option>
+      </select>
+      <button id="settings-btn" type="button">设置</button>
+    </div>
+  </header>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="process">进程</button>
+    <button class="tab" data-tab="host">域名</button>
+    <button class="tab" data-tab="ip">目标 IP</button>
+    <button class="tab" data-tab="outbound">出口节点</button>
+    <button class="tab" data-tab="live">实时</button>
+  </nav>
+
+  <main id="view"></main>
+
+  <dialog id="settings-dlg">
+    <form method="dialog" id="settings-form">
+      <h2>Mihomo 接入</h2>
+      <label>Controller URL
+        <input type="url" id="mihomo-url" placeholder="http://127.0.0.1:9090" required />
+      </label>
+      <label>Secret（可空）
+        <input type="text" id="mihomo-secret" />
+      </label>
+      <div class="dlg-actions">
+        <button value="cancel">取消</button>
+        <button id="save-settings" value="save">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
